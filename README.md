@@ -64,17 +64,79 @@ Pair("index1", "index2")
 Triple("index1","index2","index3")
 ```
 An example of this is included in the basic-syntax folder
-- Kotlin also supports Collections
+
+- Kotlin also supports Collections in stdlib. Map, Filter, Reduce are functions defined on Iterable objects similar to Clojure's standard library.
 
 ## About open source library
 
 > _Describe at least one contribution by the open source
 community written in the language._
 
+<a href=https://github.com/pawegio/KAndroid>KAndroid by pawegio</a> <br>
+
+KAndroid is an open source Kotlin library to speed up the Android development process. The author describes it as a useful extension to focus on productivity. KAndroid allows already concise Kotlin code to become shorter, without increasing its visual complexity.
+
+_Referenced from KAndroid Github Linked Above_
+
+<b>Standard Kotlin</b>
+
+```
+Intent(this, javaClass<SampleActivity>())
+startActivity(Intent(this, javaClass<SampleActivity>()))
+startActivityForResult(Intent(this, javaClass<SampleActivity>()), REQUEST_CODE)
+```
+
+<b>Kotlin using KAndroid</b>
+```
+val intent = IntentFor<SampleActivity>(this)
+startActivity<SampleActivity>()
+startActivityForResult<SampleActivity>(REQUEST_CODE)
+```
+The library reduces the redundancy in Android development <br> <br>
+
+Another example:
+
+<b>Standard Kotlin</b>
+```
+seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+    override fun onStopTrackingTouch(seekBar: SeekBar) {
+
+    }
+    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+    }
+    override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        mediaPlayer.seekTo(progress)
+    }
+
+})
+```
+
+<b>Kotlin using KAndroid</b>
+```
+seekBar.onProgressChanged { progress, fromUser ->
+    if (fromUser) mediaPlayer.seekTo(progress)
+}
+```
+Both programs monitor a seekbar and make the indicator move as it changes. The KAndroid extension reduces the code by a noticable amount.  
+
 # Analysis of the language
 > _The style of programming supported by the language: functional vs procedural programming_
 
-Kotlin is interesting in this regard. Overall, it is considered a functional programming language, with procedural programming and object oriented programming capabilities.
+Kotlin is interesting in this regard. Overall, it is considered a mix of functional programming and object oriented programming, but it can also handle procedural programming.
+
+
+```
+class Cat (val name : String){
+	fun talk(){
+    	println("MEOW says ${name});
+    }
+}
+
+fun main(args: Array<String>){
+	Cat("the cat").talk()
+}
+```
 
 > The ability to perform meta-programming such as macros
 
@@ -90,7 +152,7 @@ Temp
 
 > Functional programming constructs either as part of the language or supported by the standard library of the runtime.
 
-Constructs
+Temp
 
 > Its type system: static vs dynamic types
 
@@ -107,9 +169,17 @@ fun test() :Int? {
 ```
 Kotlin would interpret z as an integer and the code will return 35.
 
+<br>
+
 > Strengths and weaknesses of the language
 
 Strengths:
 
-- The biggest advantage of Kotlin is its innate interooperability with Java.
+- The biggest advantage of Kotlin is how concise it is without making code difficult to read
+- It has innate interoperability with Java. Experienced Java developers will be able to pickup this language with ease. Existing Java libraries function in Kotlin exactly how it is expected to.
 - Kotlin can infer variable types, as demonstrated above
+- Kotlin uses the ```?``` as a safe call operator to prevent NullPointerExceptions
+
+Weaknesses:
+- Kotlin does not support namespaces. Every function is at the global level
+- Kotlin does not support static attributes
