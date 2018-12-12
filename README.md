@@ -29,7 +29,7 @@ Kotlin is now natively supported in Android Studio as of version 3.0
  - Kotlin is capable of inferring types if they are not explicitly given,
 
 _Example: x would be given type Int_
-```
+```Kotlin
 var x = 10  
 ```
 
@@ -39,7 +39,7 @@ var x = 10
 > _Some code snippet of the language_
 
 _Hello World_
-```
+```Kotlin
 fun main(args: Array<String>){
 	println("Hello World")
 }
@@ -47,13 +47,14 @@ fun main(args: Array<String>){
 
 
 _Basic Sum Function_
-```
+```Kotlin
 fun main(args: Array<String>) :Int? {
     var x: Int = 10
     var y: Int = 20
     return x + y
 }
 ```
+
 Kotlin supports semi-colons to end lines, but it is optional and typically not used
 
 ## About the tools
@@ -73,7 +74,7 @@ The JVM allows Kotlin to have the same garbage collection as Java.
   - They are both valid return types for functions and are very useful when one or more value needs to be returned.
 
 They are written as the following:
-```
+```Kotlin
 Pair("index1", "index2")
 Triple("index1","index2","index3")
 ```
@@ -82,7 +83,7 @@ An example of this is included in the basic-syntax folder
 - Kotlin also supports Collections in stdlib. ```map```, ```filter```, ```reduce``` are functions defined on Iterable objects similar to Clojure's standard library.
 
 An example of filter:
-```
+```Kotlin
 movies.filter { it.rating > 8.5 }
     .sortedBy { it.rating}
     .take(5)
@@ -102,14 +103,14 @@ _Referenced from KAndroid Github Linked Above_
 
 <b>Standard Kotlin</b>
 
-```
+```Kotlin
 Intent(this, javaClass<SampleActivity>())
 startActivity(Intent(this, javaClass<SampleActivity>()))
 startActivityForResult(Intent(this, javaClass<SampleActivity>()), REQUEST_CODE)
 ```
 
 <b>Kotlin using KAndroid</b>
-```
+```Kotlin
 val intent = IntentFor<SampleActivity>(this)
 startActivity<SampleActivity>()
 startActivityForResult<SampleActivity>(REQUEST_CODE)
@@ -119,7 +120,7 @@ The library reduces the redundancy in Android development <br> <br>
 Another example:
 
 <b>Standard Kotlin</b>
-```
+```Kotlin
 seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
     override fun onStopTrackingTouch(seekBar: SeekBar) {
 
@@ -135,7 +136,7 @@ seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
 ```
 
 <b>Kotlin using KAndroid</b>
-```
+```Kotlin
 seekBar.onProgressChanged { progress, fromUser ->
     if (fromUser) mediaPlayer.seekTo(progress)
 }
@@ -151,14 +152,12 @@ Kotlin has full support for Higher-Order functions and Lambda functions
 
 _See basic syntax folder for examples_
 
-
-
 > The ability to perform meta-programming such as macros
 
 Kotlin uses the same meta-programming abilities as Java. It is not full metaprogramming, but Kotlin makes it easier.
 
 <a href=https://rosettacode.org/wiki/Metaprogramming#Kotlin>Fragment Referenced From Rosettacode:</a>
-```
+```Kotlin
 infix fun Double.pwr(exp: Double) = Math.pow(this, exp)
 
 fun main(args: Array<String>) {
@@ -173,7 +172,7 @@ This function returns 256. Infix functions can be called without using brackets 
 
 Kotlin has similar symbol resolution and closure to Java, but noticeably inspired by functional programming.
 
-```
+```Kotlin
 val constValue = 20 				//Variable declared as val cannot change
 var variableValue = 3 				//Variables declared as var can change
 ```
@@ -188,7 +187,7 @@ Kotlin has support for both lexical and dynamic scoping.
 The relevant scoping functions are: ```let```,``` run```,``` with```,``` also ``` and``` apply```.
 - These are also functional programming functions
 
-```
+```Kotlin
 fun scopeDemo (){
 	run {
 		val x = "Hello"
@@ -197,7 +196,7 @@ fun scopeDemo (){
 		run {
 			val x = "Goodbye"
 			println("$x $y")
-    	}
+    	 }
 	}
 }
 ```
@@ -210,7 +209,7 @@ Kotlin is a functional programming language.
 
 An important construct is of Kotlin is that it can pass functions as parameters and can return functions, these functions are considered <b>High Order</b>
 
-```
+```Kotlin
 class Class {
 //The declaration allows a function to be passed as a parameter
     fun highOrderFunction(function: (String) -> Unit) {
