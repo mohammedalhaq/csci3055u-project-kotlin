@@ -6,3 +6,5 @@ The file ```BasicSyntax.kt``` contains examples of:
 - Scope
 
 An object oriented example is ```ObjectOriented.kt```.
+
+A functional programming example is the second example in the _About the standard library_ section in the main README and others are in the Analysis
